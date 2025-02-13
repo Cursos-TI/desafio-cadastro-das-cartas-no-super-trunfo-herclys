@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
     // Definindo as variáveis para os atributos das cidades
@@ -13,9 +14,10 @@ int main() {
     printf("Digite o código da cidade: ");
     scanf("%d", &codigo); // Lê o código da cidade
 
+    getchar (); //pra descartar o enter no buffer
     printf("Digite o nome da cidade:");
-    scanf(" %[^\n]", nome); // le o nome da cidade %=string, []=como se fosse uma lista ^=nao parar ate encontrar uma nova linha
-                            
+    fgets(nome, 50, stdin);    // Usa fgets para ler o nome com espaços                         
+    nome[strcspn(nome, "\n")] = '\0';
 
     printf("digite o numero da população da cidade:");
     scanf("%d",&populacao); // le a população
@@ -35,7 +37,7 @@ int main() {
     printf("nome: %s\n",nome);
     printf("populacao:%d\n",populacao);
     printf("area:%.2f km²\n", area);
-    printf("pib: %.2f bilhoes \n", pib);
+    printf("pib: %.2f (milhoes) \n", pib);
     printf("pontos turisticos:%d\n", pontos_turisticos);
 return 0;
 }
